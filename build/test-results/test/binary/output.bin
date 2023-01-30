@@ -1,0 +1,39 @@
+[1;31m
+Start test 1[0m
+	[0;34m
+4[0m[0;34m  .   ____          _            __ _ _
+5[0m[0;34m /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+6[0m[0;34m( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+7[0m[0;34m \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+6[0m[0;34m  '  |____| .__|_| |_|_| |_\__, | / / / /
+5[0m[0;34m =========|_|==============|___/=/_/_/_/
+7[0m[0;34m :: Spring Boot ::                (v2.5.6)
+[0m[0;34m
+¿[0m[0;34m2023-01-30 18:22:25.251  INFO 33208 --- [    Test worker] cinema.Main                              : Starting Main using Java 17.0.6 on DESKTOP-E9R1BQM with PID 33208 (started by Owidiusz Zieli≈Ñski in C:\Users\Owidiusz Zieli≈Ñski\Desktop\Projekty Java\Cinema Room REST Service\Cinema Room REST Service\task)
+±[0m[0;34m2023-01-30 18:22:25.254  INFO 33208 --- [    Test worker] cinema.Main                              : No active profile set, falling back to default profiles: default
+ù[0m[0;34m2023-01-30 18:22:26.429  INFO 33208 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+ä[0m[0;34m2023-01-30 18:22:26.441  INFO 33208 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+†[0m[0;34m2023-01-30 18:22:26.441  INFO 33208 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+£[0m[0;34m2023-01-30 18:22:26.524  INFO 33208 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+∞[0m[0;34m2023-01-30 18:22:26.524  INFO 33208 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1225 ms
+¶[0m[0;34m2023-01-30 18:22:27.113  INFO 33208 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+é[0m[0;34m2023-01-30 18:22:27.143  WARN 33208 --- [    Test worker] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+ä[0m[0;34m2023-01-30 18:22:27.151  INFO 33208 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+r[0m[0;34m2023-01-30 18:22:27.172  INFO 33208 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+[0m[0;34m
+}[0m[0;34mError starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+r[0m[0;34m2023-01-30 18:22:27.197 ERROR 33208 --- [    Test worker] o.s.b.d.LoggingFailureAnalysisReporter   : 
+[0m[0;34m
+([0m[0;34m***************************
+([0m[0;34mAPPLICATION FAILED TO START
+([0m[0;34m***************************
+[0m[0;34m
+[0m[0;34mDescription:
+[0m[0;34m
+F[0m[0;34mWeb server failed to start. Port 8080 was already in use.
+[0m[0;34m
+[0m[0;34mAction:
+[0m[0;34m
+Å[0m[0;34mIdentify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+[0m[0;34m
+[0m
