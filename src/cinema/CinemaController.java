@@ -1,9 +1,13 @@
 package cinema;
 
+import cinema.dtos.*;
+import cinema.model.Stats;
+import cinema.repository.SeatingRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -23,7 +27,7 @@ public class CinemaController {
 
 
     @GetMapping("/seats")
-    public InMemoryPlacesRepository getHall() {
+    SeatingRepository getHall() {
         return cinemaService.getAllPlaces();
     }
 
@@ -33,12 +37,12 @@ public class CinemaController {
     }
 
     @PostMapping("/purchase")
-    public TicketDTO getSeatWithToken(@RequestBody PlaceDTO seatDTO) {
+    TicketDTO getSeatWithToken(@Valid @RequestBody PlaceDTO seatDTO) {
         return cinemaService.buyTicketWithToken(seatDTO.getRow(), seatDTO.getColumn());
     }
 
     @PostMapping("/stats")
-    public ResponseEntity getStats(@RequestParam String password) {
+    ResponseEntity getStats(@RequestParam String password) {
         try {
             Stats stats = cinemaService.getStats(password);
             return new ResponseEntity<>(stats, HttpStatus.OK);

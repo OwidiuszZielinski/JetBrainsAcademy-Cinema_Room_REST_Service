@@ -1,5 +1,13 @@
 package cinema;
 
+import cinema.dtos.PlaceDTO;
+import cinema.dtos.ResponseReturnTicketDTO;
+import cinema.dtos.ReturnTicketDTO;
+import cinema.dtos.TicketDTO;
+import cinema.model.Place;
+import cinema.model.Stats;
+import cinema.repository.SeatingRepository;
+import cinema.repository.TokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -9,37 +17,34 @@ import java.util.*;
 public class CinemaService {
 
 
-    private final InMemoryPlacesRepository inMemoryPlacesRepository;
-    private final InMemoryTokenRepository inMemoryTokenRepository;
+    private final SeatingRepository seatingRepository;
+    private final TokenRepository tokenRepository;
 
 
-    public CinemaService(InMemoryPlacesRepository inMemoryPlacesRepository, InMemoryTokenRepository inMemoryTokenRepository) {
-        this.inMemoryPlacesRepository = inMemoryPlacesRepository;
-        this.inMemoryTokenRepository = inMemoryTokenRepository;
+    public CinemaService(SeatingRepository seatingRepository, TokenRepository tokenRepository) {
+        this.seatingRepository = seatingRepository;
+        this.tokenRepository = tokenRepository;
     }
 
 
-    public InMemoryPlacesRepository getAllPlaces() {
-        return inMemoryPlacesRepository;
+    public SeatingRepository getAllPlaces() {
+        return seatingRepository;
     }
 
     //Exception handler
 
 
     public TicketDTO buyTicketWithToken(int row, int col) {
-        if (PlaceDTO.checkNumbers(col,row)) {
-            throw new IllegalArgumentException("The number of a row or a column is out of bounds!");
-        }
         UUID uuid = (TicketDTO.generateRandomUUID());
-        Place buy = inMemoryPlacesRepository.delete(row, col);
-        inMemoryTokenRepository.save(buy, uuid);
+        Place buy = seatingRepository.delete(row, col);
+        tokenRepository.save(buy, uuid);
         return new TicketDTO(uuid, buy);
     }
 
     public ResponseReturnTicketDTO getTicketByToken(ReturnTicketDTO uuid) {
-        TicketDTO byToken = inMemoryTokenRepository.getByToken(uuid);
-        inMemoryTokenRepository.delete(byToken);
-        inMemoryPlacesRepository.save(
+        TicketDTO byToken = tokenRepository.getByToken(uuid);
+        tokenRepository.delete(byToken);
+        seatingRepository.save(
                 byToken.getTicket().getRow(),
                 byToken.getTicket().getColumn(),
                 byToken.getTicket().getPrice()
@@ -55,9 +60,9 @@ public class CinemaService {
     }
 
     private Stats stats() {
-        int income = inMemoryTokenRepository.income();
-        int availableSeats = inMemoryPlacesRepository.getAvailable_seats().size();
-        int purchasedTickets = inMemoryTokenRepository.getTickets().size();
+        int income = tokenRepository.income();
+        int availableSeats = seatingRepository.getAvailable_seats().size();
+        int purchasedTickets = tokenRepository.getTickets().size();
         return new Stats(income, availableSeats, purchasedTickets);
 
     }
