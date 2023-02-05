@@ -1,6 +1,6 @@
 package cinema;
 
-public class Error {
+public class MyErrorResponse {
 
 
     private String error;
@@ -13,7 +13,7 @@ public class Error {
         this.error = error;
     }
 
-    public Error(String error) {
+    public MyErrorResponse(String error) {
         this.error = error;
     }
 }

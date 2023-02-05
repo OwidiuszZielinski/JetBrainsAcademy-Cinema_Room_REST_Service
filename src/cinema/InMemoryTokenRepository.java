@@ -29,7 +29,7 @@ public class InMemoryTokenRepository  {
                 return x;
             }
         }
-        throw new NoSuchElementException("Wrong Token !");
+        throw new IllegalArgumentException("Wrong Token !");
 
     }
 

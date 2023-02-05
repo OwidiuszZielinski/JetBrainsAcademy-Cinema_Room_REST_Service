@@ -30,7 +30,7 @@ public class PlaceDTO {
         this.column = column;
     }
 
-    public static boolean checkNumbers(PlaceDTO seat){
-        return seat.getColumn() > Main.COLUMNS || seat.getRow() > Main.ROWS || seat.getColumn() < 1 || seat.getRow() < 1;
+    public static boolean checkNumbers(int col, int row){
+        return col > Main.COLUMNS || row > Main.ROWS || col < 1 || row < 1;
     }
 }
